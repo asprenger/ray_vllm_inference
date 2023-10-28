@@ -1,0 +1,33 @@
+# Serve config file
+#
+# For documentation see: 
+# https://docs.ray.io/en/latest/serve/production-guide/config.html
+
+host: 0.0.0.0
+port: 8000
+
+applications:
+- name: demo_app
+  route_prefix: /
+  import_path: ray_vllm_inference.vllm_serve:deployment
+  runtime_env:
+    env_vars:
+      # Set HUGGING_FACE_HUB_TOKEN to download gated or private models like Llama-2
+      # HUGGING_FACE_HUB_TOKEN: "YOUR_HF_TOKEN"
+  args:
+    model: facebook/opt-125m
+
+    # Use a Llama-2 model. This requires setting HUGGING_FACE_HUB_TOKEN
+    # model: meta-llama/Llama-2-7b-chat-hf
+
+    # Use a quantized Llama-2 model.
+    # model: asprenger/meta-llama-Llama-2-7b-chat-hf-gemm-w4-g128-awq
+    # quantization: awq
+
+  deployments:
+  - name: VLLMInference
+    num_replicas: 1
+    # Maximum backlog for a single replica
+    max_concurrent_queries: 10
+    ray_actor_options:
+      num_gpus: 1
