@@ -76,6 +76,15 @@ Call the service with a system prompt and a user message:
 
     curl --header "Content-Type: application/json" --data '{ "messages":[{"role":"system", "content":"You are an expert assistant. Always give a short reply."}, {"role":"user", "content":"What is the capital of France?"}], "max_tokens":32, "temperature":0}' http://127.0.0.1:8000/generate
 
+### Using SqueezeLLM
+
+[SqueezeLLM](https://github.com/SqueezeAILab/SqueezeLLM)
+
+serve run ray_vllm_inference.vllm_serve:deployment model="squeeze-ai-lab/sq-llama-2-7b-w4-s0" quantization="squeezellm"
+
+curl --header "Content-Type: application/json" --data '{ "prompt":"The capital of France is ","max_tokens":32, "temperature":0}' http://127.0.0.1:8000/generate
+
+
 ### Streaming reponse
 
 Test streaming response:
