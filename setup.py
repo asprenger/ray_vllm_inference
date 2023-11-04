@@ -36,11 +36,9 @@ requirements = [
     "ray[serve]==2.7.1",
     "pydantic==1.10.13", # fix problem with Ray Serve startup
     #"vllm==0.2.1.post1", # 0.2.1.post1 is a fix for broken version 0.2.1 (Bin tensor parallelism support)
-    "vllm @ git+https://github.com/vllm-project/vllm.git@aa9af07cac7b681d7195dbd5de621fc5a2acde99",
+    "vllm @ git+https://github.com/vllm-project/vllm@8a72a543300e33206d9d8dde92846d9519675257",
     "protobuf==3.20.3"
 ]
-
-
 
 setup(
     packages=find_packages(),
