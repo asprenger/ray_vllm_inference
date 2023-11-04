@@ -1,6 +1,6 @@
 # Ray vLLM Interence
 
-A simple simple service that integrates [vLLM](https://github.com/vllm-project/vllm) with [Ray Serve](https://github.com/ray-project/ray) for fast and scalable LLM serving.
+A simple service that integrates [vLLM](https://github.com/vllm-project/vllm) with [Ray Serve](https://github.com/ray-project/ray) for fast and scalable LLM serving.
 
 vLLM is an open source LLM inference engine that supports the following features:
 
