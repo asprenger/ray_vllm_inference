@@ -118,6 +118,11 @@ class VLLMGenerateDeployment:
     async def _abort_request(self, request_id) -> None:
         await self.engine.abort(request_id)
 
+    @app.get("/health")
+    async def health() -> Response:
+        """Health check."""
+        return Response(status_code=200)
+
     @app.post("/generate")
     async def generate(self, request:GenerateRequest, raw_request:Request) -> Response:
         """Generate completion for the request.
