@@ -114,6 +114,10 @@ Run a benchmark with 1000 requests and 4 concurrent clients:
 
 ## vLLM throughput
 
-Example:
+Benchmark Llama-2-7b
 
-     python benchmark_throughput.py --model "facebook/opt-125m"
+    python benchmark_throughput.py --model="meta-llama/Llama-2-7b-chat-hf"
+
+Benchmark Llama-2-7b with AWQ:
+
+    python benchmark_throughput.py --model="asprenger/meta-llama-Llama-2-7b-chat-hf-gemm-w4-g128-awq" --quantization="awq" 
