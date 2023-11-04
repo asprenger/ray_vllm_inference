@@ -1,6 +1,6 @@
 # Ray vLLM Interence
 
-A simple example how to integrate [vLLM](https://github.com/vllm-project/vllm) with [Ray Serve](https://github.com/ray-project/ray) for fast and scalable LLM serving.
+A simple simple service that integrates [vLLM](https://github.com/vllm-project/vllm) with [Ray Serve](https://github.com/ray-project/ray) for fast and scalable LLM serving.
 
 vLLM is an open source LLM inference engine that supports the following features:
 
@@ -25,11 +25,13 @@ Requirements:
  * OS: Linux
  * Python: 3.8 or higher
  * GPU: CUDA compute capability 7.0 or higher (V100, T4, A2, A16, A10, A100, H100, etc.)
- * CUDA Toolkit 11.8 and later.
+ * CUDA Toolkit 11.8 and later
 
  Install:
 
-    pip install .
+    git clone https://github.com/asprenger/ray_vllm_inference
+    cd ray_vllm_inference
+    pip install -e .
 
 ## Usage
 
@@ -88,7 +90,9 @@ You can deploy the service on a running Ray cluster using the [serve deploy CLI]
 
     serve run deploy-config/vllm_serve_config.yaml
 
-### Benchmarking
+## Benchmarks
+
+## HTTP service
 
 [Apache Benchmark](https://httpd.apache.org/docs/2.4/programs/ab.html) is a simple tool to benchmark HTTP services.
 
@@ -107,3 +111,9 @@ generated output. The `ignore_eos` flag forces the LLM to always generate `max_t
 Run a benchmark with 1000 requests and 4 concurrent clients:
 
     ab -T "application/json" -n 1000 -c 4 -p postdata.json http://127.0.0.1:8000/generate
+
+## vLLM throughput
+
+Example:
+
+     python benchmark_throughput.py --model "facebook/opt-125m"
