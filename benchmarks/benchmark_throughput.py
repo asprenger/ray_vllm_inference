@@ -54,6 +54,7 @@ def main(args: argparse.Namespace):
 
     llm = LLM(
         model=args.model,
+        download_dir=args.download_dir,
         quantization=args.quantization,
         tensor_parallel_size=args.tensor_parallel_size,
         seed=args.seed,
