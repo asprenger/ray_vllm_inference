@@ -130,3 +130,7 @@ Benchmark Llama-2-7b
 Benchmark Llama-2-7b with AWQ:
 
     python benchmark_throughput.py --model="asprenger/meta-llama-Llama-2-7b-chat-hf-gemm-w4-g128-awq" --quantization="awq" 
+
+Benchmark Llama-2-7b with SqueezeLLM:
+
+    python benchmark_throughput.py --model="squeeze-ai-lab/sq-llama-2-7b-w4-s0" --quantization="squeezellm"
