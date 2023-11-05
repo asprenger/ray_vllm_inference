@@ -75,7 +75,7 @@ def main(args: argparse.Namespace):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Benchmark the throughput.")
-    parser.add_argument("--model", type=str, default="facebook/opt-125m"
+    parser.add_argument("--model", type=str, default="facebook/opt-125m",
                         help="the model ID")
     parser.add_argument('--quantization',
                         choices=['awq', 'squeezellm', None],
