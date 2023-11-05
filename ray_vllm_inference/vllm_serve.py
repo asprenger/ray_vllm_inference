@@ -119,7 +119,7 @@ class VLLMGenerateDeployment:
         await self.engine.abort(request_id)
 
     @app.get("/health")
-    async def health() -> Response:
+    async def health(self) -> Response:
         """Health check."""
         return Response(status_code=200)
 
