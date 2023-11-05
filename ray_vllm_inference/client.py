@@ -20,7 +20,7 @@ def _get_result(response: requests.Response) -> Dict[str, Any]:
         ) from e
     return result
 
-def main(host:str, port:int, stream:bool, prompt:str, max_tokens:int, temperature:float):
+def main(host:str, port:int, stream:bool, user_message:str, max_tokens:int, temperature:float):
 
     logging.basicConfig(level=logging.INFO)
 
@@ -29,7 +29,7 @@ def main(host:str, port:int, stream:bool, prompt:str, max_tokens:int, temperatur
     payload = {
                "messages":[
                     {"role":"system", "content":"You are a helpful and truthful assistant."}, 
-                    {"role":"user", "content":"What can I do on a weekend in London?"}
+                    {"role":"user", "content":f"{user_message}"}
                 ], 
                "stream": stream, 
                "max_tokens": max_tokens, 
