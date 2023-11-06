@@ -10,17 +10,17 @@ applications:
 - name: demo_app
   route_prefix: /
   import_path: ray_vllm_inference.vllm_serve:deployment
-  runtime_env:
-    env_vars:
-      # Set HUGGING_FACE_HUB_TOKEN to download gated or private models like Llama-2
-      # HUGGING_FACE_HUB_TOKEN: "YOUR_HF_TOKEN"
+# Set HUGGING_FACE_HUB_TOKEN environment variable to download gated or private model
+#  runtime_env:
+#    env_vars:
+#      HUGGING_FACE_HUB_TOKEN: YOUR_HF_TOKEN
   args:
     model: facebook/opt-125m
 
-    # Use a Llama-2 model. This requires setting HUGGING_FACE_HUB_TOKEN
+    # Use Llama-2 
     # model: meta-llama/Llama-2-7b-chat-hf
 
-    # Use a quantized Llama-2 model.
+    # Use Llama-2 with AWS quantization
     # model: asprenger/meta-llama-Llama-2-7b-chat-hf-gemm-w4-g128-awq
     # quantization: awq
 
