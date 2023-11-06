@@ -32,8 +32,8 @@ common_setup_kwargs = {
 }
 
 requirements = [
-    "ray==2.7.1",
-    "ray[serve]==2.7.1",
+    "ray==2.8.0",
+    "ray[serve]==2.8.0",
     "pydantic==1.10.13", # fix problem with Ray Serve startup
     "vllm==0.2.1.post1", # 0.2.1.post1 is a fix for broken version 0.2.1 (Bin tensor parallelism support)
     "protobuf==3.20.3"
