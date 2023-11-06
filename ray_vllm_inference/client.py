@@ -2,11 +2,10 @@ from typing import List, Dict, Any
 import os
 import sys
 import logging
+import time
 import argparse
 import requests
 import json
-
-# python -m ray_vllm_inference.client
 
 logger = logging.getLogger()
 
@@ -40,11 +39,18 @@ def main(host:str, port:int, stream:bool, user_message:str, max_tokens:int, temp
         response = requests.post(url, headers=headers, json=payload, stream=True)
         if response.status_code == 200:
             with os.fdopen(sys.stdout.fileno(), "wb", closefd=False) as stdout:
+                start = time.perf_counter()
+                num_tokens = 0
                 for line in response.iter_lines():
                     #print(line.decode("utf-8")) # raw JSON response
                     text = json.loads(line.decode("utf-8"))['output']
                     stdout.write(text.encode("utf-8"))
                     stdout.flush()
+                    num_tokens += 1
+                duration_s = time.perf_counter() - start
+                print(f"{num_tokens / duration_s} token/s")
+
+
         else:
             print(f'HTTP status code: {response.status_code}')
             print(_get_result(response))
