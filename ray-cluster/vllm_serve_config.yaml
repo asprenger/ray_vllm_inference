@@ -10,20 +10,20 @@ applications:
 - name: demo_app
   route_prefix: /
   import_path: ray_vllm_inference.vllm_serve:deployment
-# Set HUGGING_FACE_HUB_TOKEN environment variable to download gated or private model
-#  runtime_env:
-#    env_vars:
-#      HUGGING_FACE_HUB_TOKEN: YOUR_HF_TOKEN
+
+  runtime_env:
+    env_vars:
+      HUGGING_FACE_HUB_TOKEN: hf-1234567890
+    pip:
+    - ray_vllm_inference @ git+https://github.com//asprenger/ray_vllm_inference
   args:
     model: facebook/opt-125m
-
-    # Use Llama-2 
+    # Use Llama-2:
     # model: meta-llama/Llama-2-7b-chat-hf
-
-    # Use Llama-2 with AWS quantization
+    #
+    # Use Llama-2 with AWS quantization:
     # model: asprenger/meta-llama-Llama-2-7b-chat-hf-gemm-w4-g128-awq
     # quantization: awq
-
   deployments:
   - name: VLLMInference
     num_replicas: 1

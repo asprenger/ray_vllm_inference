@@ -84,12 +84,6 @@ Test streaming response:
 
     python -m ray_vllm_inference.client --stream --max-tokens 512 --user-message "What can I do on a weekend trip to London?"
 
-### Deploy on a Ray cluster
-
-You can deploy the service on a running Ray cluster using the [serve deploy CLI](https://docs.ray.io/en/latest/serve/api/index.html#command-line-interface-cli) command and a [serve config](https://docs.ray.io/en/latest/serve/production-guide/config.html):
-
-    serve run deploy-config/vllm_serve_config.yaml
-
 ## Benchmarks
 
 ## HTTP service
