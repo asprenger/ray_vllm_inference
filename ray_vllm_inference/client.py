@@ -48,7 +48,7 @@ def main(host:str, port:int, stream:bool, user_message:str, max_tokens:int, temp
                     stdout.flush()
                     num_tokens += 1
                 duration_s = time.perf_counter() - start
-                print(f"{num_tokens / duration_s} token/s")
+                print(f"\n{num_tokens / duration_s:.2f} token/s")
 
 
         else:
