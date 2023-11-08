@@ -27,6 +27,9 @@ docker:
     run_options:   # Extra options to pass into "docker run"
         - --ulimit nofile=65536:65536
 
+    head_run_options:
+        - -p 8000:8000
+
     # Example of running a GPU head with CPU workers
     # head_image: "rayproject/ray-ml:latest-gpu"
     # Allow Ray to automatically detect GPUs
@@ -48,7 +51,7 @@ provider:
     availability_zone: eu-west-1a,eu-west-1b,eu-west-1c
     # Whether to allow node reuse. If set to False, nodes will be terminated
     # instead of stopped.
-    cache_stopped_nodes: True # If not present, the default is True.
+    cache_stopped_nodes: False # If not present, the default is True.
 
 # How Ray will authenticate with newly launched nodes.
 auth:
@@ -112,6 +115,12 @@ available_node_types:
             # Check https://github.com/ray-project/ray/blob/master/python/ray/autoscaler/_private/aws/config.py
             # for default images for other zones.
             ImageId: ami-0a074b0a311a837ac
+            # You can provision additional disk space with a conf as follows
+            BlockDeviceMappings:
+                - DeviceName: /dev/sda1
+                  Ebs:
+                      VolumeSize: 200
+                      VolumeType: gp3
             # Run workers on spot by default. Comment this out to use on-demand.
             # NOTE: If relying on spot instances, it is best to specify multiple different instance
             # types to avoid interruption when one instance type is experiencing heightened demand.

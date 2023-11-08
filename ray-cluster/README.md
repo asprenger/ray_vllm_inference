@@ -2,8 +2,13 @@
 
 Launch the service on a Ray cluster on AWS. 
 
-For more details see: [Launching Ray Clusters on AWS](https://docs.ray.io/en/latest/cluster/vms/user-guides/launching-clusters/aws.html)
+Links:
 
+ * [Launching Ray Clusters on AWS](https://docs.ray.io/en/latest/cluster/vms/user-guides/launching-clusters/aws.html)
+ * [Cluster configuration](https://docs.ray.io/en/latest/cluster/vms/references/ray-cluster-configuration.html)
+ * [Serve CLI](https://docs.ray.io/en/latest/serve/api/index.html#command-line-interface-cli)
+ * [Serve configuration](https://docs.ray.io/en/latest/serve/production-guide/config.html)
+ 
 ## Setup
 
 Setup the necessary AWS credentials:
@@ -16,16 +21,16 @@ Start a Ray cluster using the YAML config file:
     ray up aws_cluster_gpu.yaml
 
 This command starts the head node of the cluster. The head node will start worker nodes using 
-AWS autoscaling according to the configuration. You can view the progress of the worker node 
-startup by viewing the autoscaler status on the Ray dashboard.
+according to the autoscaling configuration. You can view the progress of the worker node 
+startup by viewing the autoscaler status on the Ray dashboard or tail the logfile.
 
-You can connect via the remote Ray dashboard:
+After the `ray up` command has returned you can connect via the remote Ray dashboard:
 
     ray dashboard aws_cluster_gpu.yaml
     
-This will setup the necessary port forwarding. The dashboard can be viewed by opening http://localhost:8265.
+This will setup the necessary port forwarding. The dashboard can be viewed by opening: http://localhost:8265
 
-Copy the deploy config to the head node:
+Copy the serve config to the head node:
 
     ray rsync_up aws_cluster_gpu.yaml vllm_serve_config.yaml /home/ray/vllm_serve_config.yaml
 
@@ -33,7 +38,7 @@ Connect to the cluster head:
 
     ray attach aws_cluster_gpu.yaml
 
-Start the service on the head node using the [Serve CLI](https://docs.ray.io/en/latest/serve/api/index.html#command-line-interface-cli) and a [serve configuration](https://docs.ray.io/en/latest/serve/production-guide/config.html):
+After one or more worker nodes are ready start the serve application:
 
     serve run vllm_serve_config.yaml
 
@@ -63,3 +68,11 @@ Connect to Docker container:
 Connect to Docker container from a terminal on the server:
 
     docker exec -it ray_container /bin/bash
+
+Reverse engineer Docker run command:
+
+    docker inspect \
+    --format "$(curl -s https://gist.githubusercontent.com/efrecon/8ce9c75d518b6eb863f667442d7bc679/raw/run.tpl)" \
+    name_or_id_of_your_running_container
+
+source: [How to show the run command of a docker container](https://stackoverflow.com/questions/32758793/how-to-show-the-run-command-of-a-docker-container)    
