@@ -4,4 +4,4 @@ prompt_format:
   trailing_assistant: ""
   user: "<s>[INST] {system}{instruction} [/INST]"
   system_in_user: true
-  default_system_message: "You are an expert Python coder."
+  default_system_message: "You are an expert software developer."
