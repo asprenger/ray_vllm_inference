@@ -64,21 +64,3 @@ class CodeLlamaPromptFormatCases(unittest.TestCase):
         ]
         prompt = model_config.prompt_format.generate_prompt(messages)
         self.assertEqual(prompt, expected_prompt)
-
-
-
-    def test_foo(self):
-
-        model_config = load_model_config(MODEL_ID)
-
-        #system = "Provide answers in JavaScript"
-        system = ''
-        user = "Write a function that computes the set of sums of all contiguous sublists of a given list."
-
-        messages = [
-            Message(role='system', content=system),
-            Message(role='user', content=user),
-        ]
-        prompt = model_config.prompt_format.generate_prompt(messages)
-        print(prompt)
-
