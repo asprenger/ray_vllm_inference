@@ -66,7 +66,7 @@ Call the service with a system prompt and a user message:
 
     curl --header "Content-Type: application/json" --data '{ "messages":[{"role":"system", "content":"You are an expert assistant. Always give a short reply."}, {"role":"user", "content":"What is the capital of France?"}], "max_tokens":32, "temperature":0}' http://127.0.0.1:8000/generate
 
-### Use AWQ Quantization
+### Use a Llama-2 model with AWQ quantization
 
 [Activation-aware Weight Quantization (AWQ)](https://github.com/mit-han-lab/llm-awq) is an 4-bit quantization method for LLMs.
 
@@ -82,7 +82,7 @@ Call the service with a system prompt and a user message:
 
 Test streaming response:
 
-    python -m ray_vllm_inference.client --stream --max-tokens 512 --user-message "What can I do on a weekend trip to London?"
+    python -m ray_vllm_inference.streaming_client --max-tokens 2048 --user-message "What can I do on a weekend trip to London?"
 
 ## Benchmarks
 
