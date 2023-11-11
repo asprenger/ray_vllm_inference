@@ -35,7 +35,8 @@ requirements = [
     "ray==2.8.0",
     "ray[serve]==2.8.0",
     "pydantic==1.10.13", # fix problem with Ray Serve startup
-    "vllm==0.2.1.post1", # 0.2.1.post1 is a fix for broken version 0.2.1 (Bin tensor parallelism support)
+    # Last vllm commit before CUDA 12 upgrade:
+    "vllm @ git+https://github.com/vllm-project/vllm.git@1a2bbc930135cd3b94fbff2aafbdf5c568acc8bd", 
     "protobuf==3.20.3"
 ]
 
