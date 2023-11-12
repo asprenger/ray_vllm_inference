@@ -1,6 +1,6 @@
 # Ray vLLM Interence
 
-A simple service that integrates [vLLM](https://github.com/vllm-project/vllm) with [Ray Serve](https://github.com/ray-project/ray) for fast and scalable LLM serving.
+A service that integrates [vLLM](https://github.com/vllm-project/vllm) with [Ray Serve](https://github.com/ray-project/ray) for fast and scalable LLM serving.
 
 vLLM is an open source LLM inference engine that supports the following features:
 
@@ -108,10 +108,24 @@ Run a benchmark with 1000 requests and 4 concurrent clients:
 
 ## vLLM throughput
 
-Benchmark Llama-2-7b
+Benchmark Llama-2-7b:
 
-    python benchmark_throughput.py --model="meta-llama/Llama-2-7b-chat-hf"
+    python benchmark_throughput.py --model="meta-llama/Llama-2-7b-chat-hf" --num-prompts 1000
+
+Output:
+
+    Total time: 131.23s
+    Requests: 1000
+    Input tokens: 557060, output tokens: 149589
+    Throughput: 7.62 requests/s, 5384.72 tokens/s
 
 Benchmark Llama-2-7b with AWQ:
 
-    python benchmark_throughput.py --model="asprenger/meta-llama-Llama-2-7b-chat-hf-gemm-w4-g128-awq" --quantization="awq" 
+    python benchmark_throughput.py --model="asprenger/meta-llama-Llama-2-7b-chat-hf-gemm-w4-g128-awq" --quantization="awq" --num-prompts 1000
+
+Output:
+
+    Total time: 250.26s
+    Requests: 1000
+    Input tokens: 557060, output tokens: 149589
+    Throughput: 4.00 requests/s, 2823.66 tokens/s
