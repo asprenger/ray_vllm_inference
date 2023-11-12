@@ -10,7 +10,7 @@ def read_readme() -> str:
 common_setup_kwargs = {
     "name": "ray_vllm_inference",
     "version": "0.1.0",
-    "description": "An example how to integrate vLLM with Anyscale Ray.",
+    "description": "A service that integrates vLLM with Ray Serve for fast and scalable LLM serving.",
     "author": "Andre Sprenger",
     "license": "Apache 2.0",
     "license_files": "LICENSE.txt",
@@ -36,7 +36,8 @@ requirements = [
     "ray[serve]==2.8.0",
     "pydantic==1.10.13", # fix problem with Ray Serve startup
     # Last vllm commit before CUDA 12 upgrade:
-    "vllm @ git+https://github.com/vllm-project/vllm.git@1a2bbc930135cd3b94fbff2aafbdf5c568acc8bd", 
+    #"vllm @ git+https://github.com/vllm-project/vllm.git@1a2bbc930135cd3b94fbff2aafbdf5c568acc8bd", 
+    "vllm"
     "protobuf==3.20.3"
 ]
 
