@@ -37,7 +37,7 @@ requirements = [
     "pydantic==1.10.13", # fix problem with Ray Serve startup
     # Last vllm commit before CUDA 12 upgrade:
     #"vllm @ git+https://github.com/vllm-project/vllm.git@1a2bbc930135cd3b94fbff2aafbdf5c568acc8bd", 
-    "vllm"
+    "vllm",
     "protobuf==3.20.3"
 ]
 
