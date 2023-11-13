@@ -35,10 +35,12 @@ Log into container:
 
 The service logs to: `/tmp/ray/session_latest/logs/serve`.
 
-Environment variables can be set using: `--env SERVER_PORT=1234`.
-
 There is a warning on startup that that Ray object store is using /tmp instead of /dev/shm because the size of /dev/shm is not large enough.
 You can increase /dev/shm size by passing '--shm-size=10.24gb' to 'docker run'. Make sure to set this to more than 30% of available RAM.
+
+Environment variables can be set using `-e` arguments when calling `docker run`. For example:
+
+    docker run e MODEL_ID=facebook/opt-125m ...
 
 Start container interactively (option -it instead of -d) to show the startup logs:
 
