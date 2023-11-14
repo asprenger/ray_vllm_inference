@@ -1,11 +1,34 @@
 from typing import List
 import os
+import re
 from pathlib import Path
 from setuptools import setup, find_packages
+
+ROOT_DIR = os.path.dirname(__file__)
 
 def read_readme() -> str:
     """Read the README file."""
     return (Path(__file__).parent / "README.md").read_text(encoding="UTF-8")
+
+def get_path(*filepath) -> str:
+    return os.path.join(ROOT_DIR, *filepath)
+
+def find_version(filepath: str) -> str:
+    """Extract version information from the given filepath.
+
+    Adapted from https://github.com/ray-project/ray/blob/0b190ee1160eeca9796bc091e07eaebf4c85b511/python/setup.py
+    """
+    with open(filepath) as fp:
+        version_match = re.search(r"^__version__ = ['\"]([^'\"]*)['\"]",
+                                  fp.read(), re.M)
+        if version_match:
+            return version_match.group(1)
+        raise RuntimeError("Unable to find version string.")
+
+def get_version() -> str:
+    version = find_version(get_path("ray_vllm_inference", "__init__.py"))
+    return version
+
 
 common_setup_kwargs = {
     "name": "ray_vllm_inference",
