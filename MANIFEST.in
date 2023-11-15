@@ -1,3 +1,0 @@
-include README.md LICENSE *.sh
-recursive-include tests *.py
-recursive-include models *.yaml
