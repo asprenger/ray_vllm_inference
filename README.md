@@ -27,7 +27,11 @@ Requirements:
  * GPU: CUDA compute capability 7.0 or higher (V100, T4, A2, A16, A10, A100, H100, etc.)
  * CUDA Toolkit 11.8 and later
 
- Install:
+Install from Github:
+
+    pip install git+https://github.com/asprenger/ray_vllm_inference
+
+Install in develop mode:
 
     git clone https://github.com/asprenger/ray_vllm_inference
     cd ray_vllm_inference
@@ -112,7 +116,7 @@ Benchmark Llama-2-7b:
 
     python benchmark_throughput.py --model="meta-llama/Llama-2-7b-chat-hf" --num-prompts 1000
 
-Output:
+Output on A100:
 
     Total time: 131.23s
     Requests: 1000
@@ -123,7 +127,7 @@ Benchmark Llama-2-7b with AWQ:
 
     python benchmark_throughput.py --model="asprenger/meta-llama-Llama-2-7b-chat-hf-gemm-w4-g128-awq" --quantization="awq" --num-prompts 1000
 
-Output:
+Output on A100:
 
     Total time: 250.26s
     Requests: 1000
