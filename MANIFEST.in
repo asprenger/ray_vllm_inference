@@ -1,1 +1,3 @@
-recursive-include ray_vllm_inference/models *.yaml
+include README.md LICENSE *.sh
+recursive-include tests *.py
+recursive-include models *.yaml
