@@ -1,5 +1,4 @@
-FROM nvidia/cuda:11.8.0-cudnn8-devel-ubuntu22.04
-#FROM nvidia/cuda:12.2.2-cudnn8-devel-ubuntu22.04
+FROM nvidia/cuda:12.2.2-cudnn8-devel-ubuntu22.04
 
 ENV MODEL_ID facebook/opt-125m
 
@@ -16,7 +15,7 @@ RUN pip install --no-cache-dir --upgrade pip
 # Install other packages
 RUN apt install -y git
 
-# Install service from Github
+# Install ray_vllm_inference from Github
 RUN pip install "ray_vllm_inference @ git+https://github.com/asprenger/ray_vllm_inference"
 
 # Expose ports

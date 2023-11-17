@@ -40,7 +40,11 @@ You can increase /dev/shm size by passing '--shm-size=10.24gb' to 'docker run'. 
 
 Environment variables can be set using `-e` arguments when calling `docker run`. For example:
 
-    docker run e MODEL_ID=facebook/opt-125m ...
+    docker run -e MODEL_ID=facebook/opt-1.3b ...
+
+When loading gated or private HuggingFace models you need to set an access token:
+
+    docker run -e HUGGING_FACE_HUB_TOKEN=hf_1234567890
 
 Start container interactively (option -it instead of -d) to show the startup logs:
 
