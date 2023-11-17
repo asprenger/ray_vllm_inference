@@ -13,15 +13,16 @@ def sample_token_sequences(vocab_size:int, num_seq: int, len_mean:int, len_std:i
 def main(args: argparse.Namespace):
 
     print(args)
-
+    
     llm = LLM(
         model=args.model,
         quantization=args.quantization,
         tensor_parallel_size=args.tensor_parallel_size,
-        #max_num_seqs=args.batch_size,
-        #max_num_batched_tokens=args.batch_size * args.input_len,
+        #max_num_seqs=args.batch_size, 
+        #max_num_batched_tokens=args.batch_size * (args.input_len + args.output_len),
         trust_remote_code=args.trust_remote_code,
         dtype=args.dtype,
+        disable_log_stats=not args.enable_log_stats
     )
 
     vocab_size = llm.llm_engine.tokenizer.vocab_size
@@ -98,6 +99,9 @@ if __name__ == '__main__':
     parser.add_argument('--profile',
                         action='store_true',
                         help='profile CUDA code')
+    parser.add_argument('--enable-log-stats',
+                        action='store_true',
+                        help='log vLLM statistics')
     
     args = parser.parse_args()
     main(args)
