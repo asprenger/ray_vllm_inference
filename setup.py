@@ -33,7 +33,8 @@ requirements = [
     "ray==2.8.0",
     "ray[serve]==2.8.0",
     "pydantic==1.10.13", # fix problem with Ray Serve startup
-    "vllm==0.2.1.post1",
+    # vllm HEAD Fri Nov 17 11:26:07 CET 2023:
+    "vllm @ git+https://github.com/vllm-project/vllm.git@0fc280b06cd0cc562281b55b0b70248b119f575b", 
     "protobuf==3.20.3"
 ]
 
