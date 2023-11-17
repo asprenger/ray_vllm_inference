@@ -8,7 +8,7 @@ on how to install and start using NSight.
 
 ### Code usage
 
-Here is a basic example how to use the Nsight API for a PyTorch model:
+Here is a basic template how to use the Nsight API for a PyTorch model:
 
     torch.cuda.cudart().cudaProfilerStart()
 
