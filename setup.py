@@ -39,7 +39,7 @@ requirements = [
     "ray[serve]==2.8.0",
     "pydantic==1.10.13", # fix problem with Ray Serve startup
     # vLLM v0.2.2, CUDA 11 (see: https://vllm.readthedocs.io/en/latest/getting_started/installation.html#install-with-pip)
-    f"vllm @ git+https://github.com/vllm-project/vllm/releases/download/v0.2.2/vllm-0.2.2+cu118-{cp_version}-{cp_version}-manylinux1_x86_64.whl",
+    f"vllm @ https://github.com/vllm-project/vllm/releases/download/v0.2.2/vllm-0.2.2+cu118-{cp_version}-{cp_version}-manylinux1_x86_64.whl",
     "protobuf==3.20.3"
 ]
 
