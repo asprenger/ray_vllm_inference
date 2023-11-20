@@ -1,5 +1,6 @@
 from typing import List
 import os
+import sys
 import re
 from pathlib import Path
 from setuptools import setup, find_packages
@@ -29,12 +30,16 @@ def get_version() -> str:
     version = find_version(get_path("ray_vllm_inference", "__init__.py"))
     return version
 
+assert sys.version_info.major == 3
+assert sys.version_info.minor in [8,9,10,11,12]
+cp_version = f"cp{sys.version_info.major}{sys.version_info.minor}"
+
 requirements = [
     "ray==2.8.0",
     "ray[serve]==2.8.0",
     "pydantic==1.10.13", # fix problem with Ray Serve startup
-    # vllm HEAD Fri Nov 17 11:26:07 CET 2023:
-    "vllm @ git+https://github.com/vllm-project/vllm.git@0fc280b06cd0cc562281b55b0b70248b119f575b", 
+    # vLLM v0.2.2, CUDA 11 (see: https://vllm.readthedocs.io/en/latest/getting_started/installation.html#install-with-pip)
+    f"vllm @ git+https://github.com/vllm-project/vllm/releases/download/v0.2.2/vllm-0.2.2+cu118-{cp_version}-{cp_version}-manylinux1_x86_64.whl",
     "protobuf==3.20.3"
 ]
 
