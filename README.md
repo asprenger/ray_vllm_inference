@@ -133,3 +133,7 @@ Output on A100:
     Requests: 1000
     Input tokens: 557060, output tokens: 149589
     Throughput: 4.00 requests/s, 2823.66 tokens/s
+
+Benchmark Llama-2-7b with SqueezeLLM (w4):
+
+    python benchmark_throughput.py --model="squeeze-ai-lab/sq-llama-2-7b-w4-s0" --quantization="squeezellm" --num-prompts 1000    
