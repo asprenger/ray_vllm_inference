@@ -1,6 +1,5 @@
 from typing import List
 import os
-import sys
 import re
 from pathlib import Path
 from setuptools import setup, find_packages
@@ -30,10 +29,6 @@ def get_version() -> str:
     version = find_version(get_path("ray_vllm_inference", "__init__.py"))
     return version
 
-assert sys.version_info.major == 3
-assert sys.version_info.minor in [8,9,10,11,12]
-cp_version = f"cp{sys.version_info.major}{sys.version_info.minor}"
-
 requirements = [
     "ray==2.8.0",
     "ray[serve]==2.8.0",
@@ -44,7 +39,7 @@ requirements = [
 
 setup(
     name="ray_vllm_inference",
-    version="0.1.0",
+    version=get_version(),
     description="A service that integrates vLLM with Ray Serve for fast and scalable LLM serving.",
     author="Andre Sprenger",
     license="Apache 2.0",
