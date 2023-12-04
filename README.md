@@ -25,7 +25,9 @@ Requirements:
  * OS: Linux
  * Python: 3.8 or higher
  * GPU: CUDA compute capability 7.0 or higher (V100, T4, A2, A16, A10, A100, H100, etc.)
- * CUDA Toolkit 11.8 and later
+ * CUDA Toolkit 12.1 and later
+
+If you deploy on [RunPod](https://www.runpod.io/) it is recommendaed to use Docker image `runpod/pytorch:2.1.1-py3.10-cuda12.1.1-devel-ubuntu22.04`.
 
 Install from Github:
 
